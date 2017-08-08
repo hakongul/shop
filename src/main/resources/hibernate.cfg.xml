@@ -7,12 +7,13 @@
     <session-factory><!-- Database connection properties - Driver, URL, user, password -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/shop</property>
-        <property name="hibernate.connection.username">shop</property>
+        <property name="hibernate.connection.username">shop1</property>
         <property name="hibernate.connection.password">spkworkshop1</property>
 
         <!-- org.hibernate.HibernateException: No CurrentSessionContext configured! -->
         <property name="hibernate.current_session_context_class">thread</property>
 
         <!-- Mapping with model class containing annotations -->
-        <mapping class="no.knowit.workshop.model.Customer"/></session-factory>
+        <mapping class="no.knowit.workshop.model.Customer"/>
+    </session-factory>
 </hibernate-configuration>
