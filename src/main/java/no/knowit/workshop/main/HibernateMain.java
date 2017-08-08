@@ -12,6 +12,7 @@ public class HibernateMain {
         Customer newCustomer = new Customer();
         newCustomer.setFirstname("Kunde");
         newCustomer.setLastname("Kundesen");
+        newCustomer.setNickname("Ku");
         newCustomer.setEmail("kunde.kundesen@kundesen.net");
         newCustomer.setRegistrationDate(new Date());
 
@@ -29,5 +30,6 @@ public class HibernateMain {
 
         //Kill it
         session.close();
+        System.exit(1);
     }
 }

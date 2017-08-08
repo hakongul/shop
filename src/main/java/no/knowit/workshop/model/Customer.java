@@ -17,6 +17,9 @@ public class Customer {
     @Column(name = "LASTNAME", nullable = false)
     private String lastname;
 
+    @Column(name = "NICKNAME", nullable = true)
+    private String nickname;
+
     @Column(name = "EMAIL")
     private String email;
 
@@ -45,6 +48,14 @@ public class Customer {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getEmail() {
