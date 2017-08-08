@@ -7,6 +7,23 @@
     <groupId>no.knowit.butikktest</groupId>
     <artifactId>shop</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <!-- External dependency versions -->
+        <hibernate.version>5.2.10.Final</hibernate.version>
+        <postgresql.version>42.1.4</postgresql.version>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
