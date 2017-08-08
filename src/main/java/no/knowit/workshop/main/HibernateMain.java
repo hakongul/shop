@@ -1,6 +1,7 @@
 package no.knowit.workshop.main;
 
 import no.knowit.workshop.model.Customer;
+import no.knowit.workshop.model.Product;
 import no.knowit.workshop.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,10 +10,18 @@ import java.util.Date;
 
 public class HibernateMain {
     public static void main(String[] args) {
+        HibernateMain HM = new HibernateMain();
+
+        HM.addCustomer("Kunde", "Kundesen", "kunde.kundesen@kundesen.net");
+
+        HM.addProduct("Melk", 10, "Billigste melka!");
+    }
+
+    public void addCustomer(String firstname, String lastname, String email) {
         Customer newCustomer = new Customer();
-        newCustomer.setFirstname("Kunde");
-        newCustomer.setLastname("Kundesen");
-        newCustomer.setEmail("kunde.kundesen@kundesen.net");
+        newCustomer.setFirstname(firstname);
+        newCustomer.setLastname(lastname);
+        newCustomer.setEmail(email);
         newCustomer.setRegistrationDate(new Date());
 
         //Get session
@@ -28,6 +37,26 @@ public class HibernateMain {
         System.out.println("Customer ID: " + newCustomer.getId());
 
         //Kill it
+        session.close();
+    }
+
+    public void addProduct(String productname, int price, String description) {
+        Product newProduct = new Product();
+        newProduct.setProductName(productname);
+        newProduct.setPrice(price);
+        newProduct.setDescription(description);
+
+        SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
+        Session session = sessionFactory.getCurrentSession();
+
+        session.beginTransaction();
+
+        session.save(newProduct);
+
+        session.getTransaction().commit();
+
+        System.out.println("New Product ID: " + newProduct.getId() + " with name: " + newProduct.getProductName());
+
         session.close();
     }
 }
