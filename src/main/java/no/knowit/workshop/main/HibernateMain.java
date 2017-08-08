@@ -12,12 +12,12 @@ public class HibernateMain {
     public static void main(String[] args) {
         HibernateMain HM = new HibernateMain();
 
-        HM.addCustomer("Kunde", "Kundesen", "kunde.kundesen@kundesen.net");
+        HM.addCustomer("Kunde", "Kundesen", "Ku", "kunde.kundesen@kundesen.net");
 
         HM.addProduct("Melk", 10, "Billigste melka!");
     }
 
-    public void addCustomer(String firstname, String lastname, String email) {
+    public void addCustomer(String firstname, String lastname, String nickname, String email) {
         Customer newCustomer = new Customer();
         newCustomer.setFirstname(firstname);
         newCustomer.setLastname(lastname);
@@ -58,5 +58,6 @@ public class HibernateMain {
         System.out.println("New Product ID: " + newProduct.getId() + " with name: " + newProduct.getProductName());
 
         session.close();
+        System.exit(1);
     }
 }
