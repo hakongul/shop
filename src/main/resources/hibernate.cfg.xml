@@ -18,5 +18,6 @@
 
         <!-- Mapping with model class containing annotations -->
         <mapping class="no.knowit.workshop.model.Customer"/>
+        <mapping class="no.knowit.workshop.model.Product"/>
     </session-factory>
 </hibernate-configuration>
