@@ -17,7 +17,7 @@ public class HibernateMain {
         HM.addProduct("Melk", 10, "Billigste melka!");
     }
 
-    public void addCustomer(String firstname, String lastname, String nickname, String email) {
+    private void addCustomer(String firstname, String lastname, String nickname, String email) {
         Customer newCustomer = new Customer();
         newCustomer.setFirstname(firstname);
         newCustomer.setLastname(lastname);
@@ -41,7 +41,7 @@ public class HibernateMain {
         session.close();
     }
 
-    public void addProduct(String productname, int price, String description) {
+    private void addProduct(String productname, int price, String description) {
         Product newProduct = new Product();
         newProduct.setProductName(productname);
         newProduct.setPrice(price);

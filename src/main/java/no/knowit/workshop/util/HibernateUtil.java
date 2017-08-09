@@ -1,7 +1,5 @@
 package no.knowit.workshop.util;
 
-import no.knowit.workshop.model.Customer;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
