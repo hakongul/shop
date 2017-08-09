@@ -21,6 +21,7 @@ public class HibernateMain {
         Customer newCustomer = new Customer();
         newCustomer.setFirstname(firstname);
         newCustomer.setLastname(lastname);
+        newCustomer.setNickname(nickname);
         newCustomer.setEmail(email);
         newCustomer.setRegistrationDate(new Date());
 
