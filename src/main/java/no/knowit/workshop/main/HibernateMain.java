@@ -12,12 +12,20 @@ public class HibernateMain {
     public static void main(String[] args) {
         HibernateMain HM = new HibernateMain();
 
-        HM.addCustomer("Kunde", "Kundesen", "Ku", "kunde.kundesen@kundesen.net");
+        Customer cust = HM.addCustomer("Kunde", "Kundesen", "Ku", "kunde.kundesen@kundesen.net");
+        cust.setNickname("KuKu");
+        Customer changedCustomer = (Customer)HM.updateObject(cust);
+        System.out.println("Customer ID: " + changedCustomer.getId() + " with nickname: " + changedCustomer.getNickname());
 
-        HM.addProduct("Melk", 10, "Billigste melka!");
+        Product prod = HM.addProduct("Melk", 10, "Billigste melka!");
+        prod.setDescription("Den beste OG BILLIGSTE melka!");
+        Product changedProduct = (Product)HM.updateObject(prod);
+        System.out.println("Product ID: " + changedProduct.getId() + " with description: " + changedProduct.getDescription());
+
+        System.exit(1);
     }
 
-    private void addCustomer(String firstname, String lastname, String nickname, String email) {
+    private Customer addCustomer(String firstname, String lastname, String nickname, String email) {
         Customer newCustomer = new Customer();
         newCustomer.setFirstname(firstname);
         newCustomer.setLastname(lastname);
@@ -25,40 +33,50 @@ public class HibernateMain {
         newCustomer.setEmail(email);
         newCustomer.setRegistrationDate(new Date());
 
-        //Get session
-        SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
-        Session session = sessionFactory.getCurrentSession();
-        //Start transaction
-        session.beginTransaction();
-        //Save the object
-        session.save(newCustomer);
-        //Commit transaction
-        session.getTransaction().commit();
+        Customer saved = (Customer)saveObject(newCustomer);
 
-        System.out.println("Customer ID: " + newCustomer.getId());
+        System.out.println("New Customer ID: " + saved.getId() + " with name: " + saved.getFirstname() + " " +
+                saved.getLastname() + " and nickname: " + saved.getNickname());
 
-        //Kill it
-        session.close();
+        return saved;
     }
 
-    private void addProduct(String productname, int price, String description) {
+    private Product addProduct(String productname, int price, String description) {
         Product newProduct = new Product();
         newProduct.setProductName(productname);
         newProduct.setPrice(price);
         newProduct.setDescription(description);
 
+        Product saved = (Product)saveObject(newProduct);
+
+        System.out.println("New Product ID: " + saved.getId() + " with name: " + saved.getProductName() +
+                " and description: " + saved.getDescription());
+
+        return saved;
+    }
+
+    private Object saveObject(Object object) {
         SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
         Session session = sessionFactory.getCurrentSession();
 
         session.beginTransaction();
-
-        session.save(newProduct);
-
+        session.save(object);
         session.getTransaction().commit();
-
-        System.out.println("New Product ID: " + newProduct.getId() + " with name: " + newProduct.getProductName());
-
         session.close();
-        System.exit(1);
+
+        return object;
+    }
+
+    private Object updateObject(Object object) {
+
+        SessionFactory sf = HibernateUtil.getSessionAnnotationFactory();
+        Session s = sf.getCurrentSession();
+
+        s.beginTransaction();
+        s.update(object);
+        s.getTransaction().commit();
+        s.close();
+
+        return object;
     }
 }
