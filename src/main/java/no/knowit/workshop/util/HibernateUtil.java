@@ -1,7 +1,5 @@
 package no.knowit.workshop.util;
 
-import no.knowit.workshop.model.Customer;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -16,6 +14,7 @@ public class HibernateUtil {
             Configuration config = new Configuration();
             config.configure("hibernate.cfg.xml");
             config.addAnnotatedClass(no.knowit.workshop.model.Customer.class);
+            config.addAnnotatedClass(no.knowit.workshop.model.Product.class);
             System.out.println("Hibernate Annotation Config loaded");
 
             ServiceRegistry serviceRegistry = new
