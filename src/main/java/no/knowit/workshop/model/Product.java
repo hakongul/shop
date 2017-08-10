@@ -3,12 +3,12 @@ package no.knowit.workshop.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Product", uniqueConstraints = {@UniqueConstraint(columnNames = "ID")})
+@Table(name = "Product", uniqueConstraints = {@UniqueConstraint(columnNames = "PID")})
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false, unique = true, length = 20)
-    private int id;
+    @Column(name = "PID", nullable = false, unique = true, length = 20)
+    private int pid;
 
     @Column(name = "PRODUCTNAME", nullable = false)
     private String productName;
@@ -19,9 +19,9 @@ public class Product {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
-    public int getId() { return id; }
+    public int getPid() { return pid; }
 
-    public void setId(int id) { this.id = id; }
+    public void setPid(int pid) { this.pid = pid; }
 
     public String getProductName() { return productName; }
 

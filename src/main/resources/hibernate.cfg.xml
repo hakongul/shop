@@ -19,5 +19,6 @@
         <!-- Mapping with model class containing annotations -->
         <mapping class="no.knowit.workshop.model.Customer"/>
         <mapping class="no.knowit.workshop.model.Product"/>
+        <mapping class="no.knowit.workshop.model.ShoppingCart"/>
     </session-factory>
 </hibernate-configuration>
