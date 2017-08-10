@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Customer", uniqueConstraints = {@UniqueConstraint(columnNames = "ID")})
+@Table(name = "Customer", uniqueConstraints = {@UniqueConstraint(columnNames = "CID")})
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false, unique = true, length = 20)
-    private int id;
+    @Column(name = "CID", nullable = false, unique = true, length = 20)
+    private int cid;
 
     @Column(name = "FIRSTNAME", nullable = false)
     private String firstname;
@@ -26,12 +26,12 @@ public class Customer {
     @Column(name = "REG_DATE", nullable = false)
     private Date registrationDate;
 
-    public int getId() {
-        return id;
+    public int getCid() {
+        return cid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCid(int id) {
+        this.cid = id;
     }
 
     public String getFirstname() {

@@ -15,6 +15,7 @@ public class HibernateUtil {
             config.configure("hibernate.cfg.xml");
             config.addAnnotatedClass(no.knowit.workshop.model.Customer.class);
             config.addAnnotatedClass(no.knowit.workshop.model.Product.class);
+            config.addAnnotatedClass(no.knowit.workshop.model.ShoppingCart.class);
             System.out.println("Hibernate Annotation Config loaded");
 
             ServiceRegistry serviceRegistry = new
