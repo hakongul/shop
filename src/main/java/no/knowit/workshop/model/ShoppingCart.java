@@ -12,11 +12,11 @@ public class ShoppingCart {
     private int shid;
 
     @OneToOne()
-    @JoinColumn(name = "cid")
+    @JoinColumn(name = "CID")
     private Customer customer;
 
     @ManyToMany()
-    @JoinColumn(name = "pid")
+    @JoinColumn(name = "PID")
     private List<Product> products;
 
     public int getShid() {

@@ -20,11 +20,16 @@ class Runner {
 
         Product prod = addProduct("Melk", 10, "Billigste melka!");
         prod.setDescription("Den beste OG BILLIGSTE melka!");
-        Product changedProduct = (Product)updateObject(prod);
-        System.out.println("Product ID: " + changedProduct.getPid() + " with description: " + changedProduct.getDescription());
+        Product changedProduct1 = (Product)updateObject(prod);
+        System.out.println("Product ID: " + changedProduct1.getPid() + " with description: " + changedProduct1.getDescription());
 
-        List<Product> prods = Arrays.asList(changedProduct);
-        ShoppingCart cart = addCart(changedCustomer, prods);
+        Product prod2 = addProduct("Brød", 10, "Billigste brødet!");
+        prod2.setDescription("Det beste OG BILLIGSTE brødet!");
+        Product changedProduct2 = (Product)updateObject(prod2);
+        System.out.println("Product ID: " + changedProduct2.getPid() + " with description: " + changedProduct2.getDescription());
+
+        List<Product> prods = Arrays.asList(changedProduct1, changedProduct2);
+        addCart(changedCustomer, prods);
 
         System.exit(1);
     }
@@ -67,10 +72,11 @@ class Runner {
         ShoppingCart saved = (ShoppingCart)saveObject(cart);
 
         System.out.println("Shopping cart ID: " + saved.getShid() + " for customer ID: " + saved.getCustomer().getCid() +
-                " and product: " + saved.getProducts().get(0).getProductName());
+                " and products: " + saved.getProducts().get(0).getProductName() + ", " + saved.getProducts().get(1).getProductName());
 
         return saved;
     }
+
 
     private Object saveObject(Object object) {
         SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
